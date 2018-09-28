@@ -1,0 +1,158 @@
+@import "../base/mixin";
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  .slider-wrap {
+    position: relative;
+    width: 100%;
+    white-space: nowrap;
+    height: 620px;
+    overflow: hidden;
+    @include breakpoint("ipad_portrait") {
+      height: 700px;
+    }
+    @include breakpoint("mobile_portrait") {
+      height: 600px;
+    }
+    .slide_1 {
+      width: 100%;
+      margin-top: -5%;
+
+      @include breakpoint("ipad_portrait") {
+        width: 1000px;
+        height: 750px;
+      }
+      @include breakpoint("mobile_portrait") {
+        height: 710px;
+        width: 800px;
+        margin-left: -30%;
+      }
+    }
+
+    .slide_2 {
+      @extend .slide_1;
+      margin-top: -5%;
+      @include breakpoint("mobile_portrait") {
+        margin-top: -5%;
+      }
+    }
+
+    .slide_3 {
+      @extend .slide_1;
+      margin-top: -25%;
+      @include breakpoint("ipad_portrait") {
+        height: 920px;
+      }
+      @include breakpoint("mobile_portrait") {
+        width: 780px;
+        margin-top: -5%;
+        margin-left: -15%;
+      }
+    }
+
+    .slider--show {
+      display: block;
+    }
+    .slider--hide {
+      display: none;
+    }
+    .slider-buttons {
+      position: absolute;
+      top: 50%;
+      left: 41%;
+
+      @include breakpoint("ipad_portrait") {
+        top: 60%;
+        left: 35%;
+      }
+
+      @include breakpoint("mobile_portrait") {
+        top: 60%;
+        left: 30%;
+      }
+      @include breakpoint(500px) {
+        top: 60%;
+        left: 25%;
+      }
+      @include breakpoint("small-mobile-portrait") {
+        top: 60%;
+        left: 15%;
+      }
+
+      width: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .left-button {
+        background-color: black;
+        color: white;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 1.2em;
+        cursor: pointer;
+        border: none;
+
+        &:hover {
+          background-color: lightcoral;
+        }
+      }
+      .right-button {
+        @extend .left-button;
+      }
+
+      .center-button {
+        @extend .left-button;
+        border-radius: 20px;
+        width: 150px;
+        font-size: 1.2em;
+        margin: 0 10px 0 10px;
+        padding: 0 5px 0 5px;
+      }
+    }
+  }
+
+  .instagram-posts-wrapper {
+    width: 100%;
+    .instagram-posts {
+      list-style-type: none;
+      display: grid;
+      grid-template-columns: auto auto auto;
+      @include breakpoint("ipad_portrait") {
+        grid-template-columns: auto auto;
+      }
+      @include breakpoint("mobile_portrait") {
+        grid-template-columns: auto;
+      }
+
+      padding-left: 0;
+      width: 100%;
+      justify-content: space-around;
+
+      li {
+        height: auto;
+        margin: 10px auto auto 0;
+        border: 1px solid whitesmoke;
+        width: 300px;
+        img {
+          width: 100%;
+          display: block;
+        }
+
+        .insta-post-text {
+          margin: 0;
+          padding: 5px;
+          background-color: white;
+          margin: 0;
+        }
+      }
+    }
+  }
+}

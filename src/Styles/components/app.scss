@@ -1,0 +1,15 @@
+div {
+  .background-img {
+    background-image: url("/assets/background.png");
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: -1;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-size: cover;
+  }
+}
