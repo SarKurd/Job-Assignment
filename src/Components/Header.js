@@ -15,8 +15,8 @@ class Header extends Component {
   render() {
     const { showMobileNavBar } = this.state;
 
-    const closeBar = <i class="fa fa-times" />;
-    const menuBar = <i class="fa fa-bars" />;
+    const closeBar = <i className="fa fa-times" />;
+    const menuBar = <i className="fa fa-bars" />;
 
     return (
       <div className="Header">

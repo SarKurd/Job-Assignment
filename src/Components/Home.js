@@ -10,7 +10,6 @@ class Home extends Component {
   };
 
   componentWillMount() {
-    console.log(REACT_APP_ACCESS_TOKEN);
     Axios(
       `https://api.instagram.com/v1/users/self/media/recent/?access_token=${
         process.env.REACT_APP_ACCESS_TOKEN

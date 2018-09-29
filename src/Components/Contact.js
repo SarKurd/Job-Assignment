@@ -11,7 +11,8 @@ class Contact extends Component {
     },
     validateFirstName: 0,
     validateLastName: 0,
-    validateMessage: 0
+    validateMessage: 0,
+    formSuccess: true
   };
 
   validateEmail = event => {
@@ -53,7 +54,34 @@ class Contact extends Component {
   };
 
   submitForm = event => {
-    //Form submition here
+    console.log(event.target);
+    event.preventDefault();
+    Object.values(event.target.elements).forEach(element => {
+      if (validator.isEmpty(element.value)) {
+        if (element.name === "firstName")
+          this.setState({
+            validateFirstName: 2
+          });
+        if (element.name === "lastName")
+          this.setState({
+            validateLastName: 2
+          });
+        if (element.name === "email")
+          this.setState({
+            email: {
+              inputStatus: 2,
+              message: "Email field cannot be empty"
+            }
+          });
+        if (element.name === "message")
+          this.setState({
+            validateMessage: 2
+          });
+
+        this.setState({ formSuccess: false });
+        return;
+      }
+    });
   };
 
   render() {
@@ -61,7 +89,8 @@ class Contact extends Component {
       email,
       validateMessage,
       validateFirstName,
-      validateLastName
+      validateLastName,
+      formSuccess
     } = this.state;
     return (
       <div className="contact-wrapper">
@@ -70,7 +99,17 @@ class Contact extends Component {
             WE WOULD LOVE TO <br /> HEAR FROM YOU
           </h1>
         </div>
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.submitForm}>
+          <div className="alert-label-container">
+            <label
+              className={`alert-label ${
+                formSuccess ? "alert-label--hide" : "alert-label--show"
+              }`}
+            >
+              <i className="fa fa-exclamation" />
+              Please complete the form and try again
+            </label>
+          </div>
           <div className="personal-info-container">
             <div className="input-container">
               <input
@@ -168,33 +207,35 @@ class Contact extends Component {
               />
             </div>
           </div>
-          <div className="message-input-container">
-            <textarea
-              id="message"
-              className="input"
-              name="message"
-              onChange={this.validateInputs}
-              placeholder="Message"
-            />
-            <label
-              className={`${
-                validateMessage === 0 || validateMessage === 1
-                  ? "label-valid"
-                  : "label-notValid"
-              }`}
-              htmlFor="email"
-            >
-              This field cannot be empty
-            </label>
-            <i
-              className={`fa fa-check ${
-                validateMessage === 1
-                  ? "input--ok"
-                  : validateMessage === 0
-                    ? ""
-                    : "input--bad"
-              }`}
-            />
+          <div className="message-container">
+            <div className="message-input-container">
+              <textarea
+                id="message"
+                className="input"
+                name="message"
+                onChange={this.validateInputs}
+                placeholder="Message"
+              />
+              <label
+                className={`${
+                  validateMessage === 0 || validateMessage === 1
+                    ? "label-valid"
+                    : "label-notValid"
+                }`}
+                htmlFor="message"
+              >
+                This field cannot be empty
+              </label>
+              <i
+                className={`fa fa-check ${
+                  validateMessage === 1
+                    ? "input--ok"
+                    : validateMessage === 0
+                      ? ""
+                      : "input--bad"
+                }`}
+              />
+            </div>
           </div>
           <div className="submit-container">
             <button type="submit">Submit</button>
