@@ -24,7 +24,7 @@
       margin-top: -5%;
 
       @include breakpoint("ipad_portrait") {
-        width: 1000px;
+        width: 1010px;
         height: 750px;
       }
       @include breakpoint("mobile_portrait") {
@@ -63,31 +63,14 @@
     }
     .slider-buttons {
       position: absolute;
-      top: 50%;
-      left: 41%;
-
-      @include breakpoint("ipad_portrait") {
-        top: 60%;
-        left: 35%;
-      }
-
-      @include breakpoint("mobile_portrait") {
-        top: 60%;
-        left: 30%;
-      }
-      @include breakpoint(500px) {
-        top: 60%;
-        left: 25%;
-      }
-      @include breakpoint("small-mobile-portrait") {
-        top: 60%;
-        left: 15%;
-      }
-
+      top: 70%;
+      left: 0;
+      right: 0;
       width: 250px;
       display: flex;
       justify-content: center;
       align-items: center;
+      margin: 0 auto;
 
       .left-button {
         background-color: black;
