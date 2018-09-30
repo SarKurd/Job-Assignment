@@ -47,14 +47,15 @@ class Home extends Component {
       <div className="wrapper">
         <div className="slider-wrap">
           <img
-            alt="Ritual ad"
+
+            alt="Ritual cups logo"
             src="/assets/ritual.jpg"
             className={`slide_1 ${
               currentSlide === 1 ? `slider--show` : `slider--hide`
             }`}
           />
           <img
-            alt="Eneco"
+            alt="Red head girl"
             src="/assets/Eneco.jpg"
             className={`slide_2 ${
               currentSlide === 2 ? `slider--show` : `slider--hide`
@@ -85,7 +86,7 @@ class Home extends Component {
               if (post.text !== "") {
                 return (
                   <li key={index}>
-                    <img alt="post" src={post.image} />
+                    <img alt="instagram post" src={post.image} />
                     <p className="insta-post-text">{post.text}</p>
                   </li>
                 );
