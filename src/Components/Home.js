@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../Styles/components/home.scss";
 import "font-awesome/css/font-awesome.min.css";
 import Axios from "axios";
 

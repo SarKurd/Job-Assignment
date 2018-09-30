@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Header, Footer, Home, People, Contact } from "./Components";
 import { Route } from "react-router-dom";
-import "./Styles/components/app.scss";
 
 class App extends Component {
   render() {

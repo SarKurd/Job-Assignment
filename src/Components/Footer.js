@@ -1,5 +1,4 @@
 import React from "react";
-import "../Styles/components/footer.scss";
 
 export default () => (
   <footer className="footer">

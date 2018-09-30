@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import "../Styles/components/header.scss";
 
 class Header extends Component {
   state = {

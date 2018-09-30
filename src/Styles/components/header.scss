@@ -1,5 +1,3 @@
-@import "../base/mixin";
-
 .Header {
   background-color: black;
   color: white;
@@ -13,6 +11,7 @@
     line-height: 45px;
     color: white;
     display: none;
+    cursor: pointer;
 
     @include breakpoint("mobile_portrait") {
       display: block;

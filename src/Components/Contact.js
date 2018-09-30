@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../Styles/components/contact.scss";
 import validator from "validator";
 
 class Contact extends Component {
