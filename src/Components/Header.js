@@ -6,17 +6,19 @@ class Header extends Component {
     showMobileNavBar: false
   };
 
-  toggleNavBar = () => {
+  toggleNavBar = event => {
     const { showMobileNavBar } = this.state;
-    this.setState({ showMobileNavBar: !showMobileNavBar });
+    if (event.target.tagName.toLowerCase() === "i") {
+      this.setState({ showMobileNavBar: !showMobileNavBar });
+      return;
+    }
+    this.setState({ showMobileNavBar: false });
   };
 
   render() {
     const { showMobileNavBar } = this.state;
-
     const closeBar = <i className="fa fa-times" />;
     const menuBar = <i className="fa fa-bars" />;
-
     return (
       <div className="Header">
         <div onClick={this.toggleNavBar} className="menu">
