@@ -47,18 +47,21 @@ class Home extends Component {
       <div className="wrapper">
         <div className="slider-wrap">
           <img
+            alt="Ritual ad"
             src="/assets/ritual.jpg"
             className={`slide_1 ${
               currentSlide === 1 ? `slider--show` : `slider--hide`
             }`}
           />
           <img
+            alt="Eneco"
             src="/assets/Eneco.jpg"
             className={`slide_2 ${
               currentSlide === 2 ? `slider--show` : `slider--hide`
             }`}
           />
           <img
+            alt="tam tam reception"
             src="/assets/tamtam.png"
             className={`slide_3 ${
               currentSlide === 3 ? `slider--show` : `slider--hide`
