@@ -12,7 +12,6 @@ const eslintFormatter = require("react-dev-utils/eslintFormatter");
 const ModuleScopePlugin = require("react-dev-utils/ModuleScopePlugin");
 const paths = require("./paths");
 const getClientEnvironment = require("./env");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -211,12 +210,9 @@ module.exports = {
           {
             test: /\.scss$/,
             use: [
-              // fallback to style-loader in development
-              process.env.NODE_ENV !== "production"
-                ? "style-loader"
-                : MiniCssExtractPlugin.loader,
-              "css-loader",
-              "sass-loader"
+              "style-loader", // creates style nodes from JS strings
+              "css-loader", // translates CSS into CommonJS
+              "sass-loader" // compiles Sass to CSS, using Node Sass by default
             ]
           },
           // "file" loader makes sure assets end up in the `build` folder.
@@ -241,12 +237,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: "[name].css",
-      chunkFilename: "[id].css"
-    }),
     // Makes some environment variables available in index.html.
     // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
     // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">

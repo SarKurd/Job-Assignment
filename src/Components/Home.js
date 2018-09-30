@@ -47,6 +47,7 @@ class Home extends Component {
       <div className="wrapper">
         <div className="slider-wrap">
           <img
+
             alt="Ritual cups logo"
             src="/assets/ritual.jpg"
             className={`slide_1 ${
