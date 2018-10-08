@@ -5,7 +5,9 @@ import Axios from "axios";
 class Home extends Component {
   state = {
     posts: [],
-    currentSlide: 2
+    shiftSlideToRight: "",
+    shiftSlideToLeft: "",
+    currentSlide: 1
   };
 
   componentWillMount() {
@@ -29,54 +31,63 @@ class Home extends Component {
     });
   }
 
-  slider(direction) {
-    let currentSlide = this.state.currentSlide;
-    currentSlide += direction;
-    if (currentSlide > 3) {
-      currentSlide = 1;
-    } else if (currentSlide < 1) {
-      currentSlide = 3;
+  toggleSliderClass = buttonName => {
+    const { currentSlide } = this.state;
+    if (buttonName === "right" && this.state.currentSlide === 1) {
+      this.setState({
+        shiftSlideToLeft: "shift_to_left",
+        shiftSlideToRight: "",
+        currentSlide: 2
+      });
+      return;
     }
-    this.setState({ currentSlide });
-  }
+    if (
+      (buttonName === "right" && currentSlide === 0) ||
+      (currentSlide === 2 && buttonName === "left")
+    ) {
+      this.setState({
+        shiftSlideToLeft: "",
+        shiftSlideToRight: "",
+        currentSlide: 1
+      });
+      return;
+    }
+    if (buttonName === "left" && this.state.currentSlide === 1) {
+      this.setState({
+        shiftSlideToLeft: "",
+        shiftSlideToRight: "shift_to_right",
+        currentSlide: 0
+      });
+    }
+  };
 
   render() {
-    const { currentSlide } = this.state;
-    console.log(currentSlide);
+    const { shiftSlideToLeft, shiftSlideToRight } = this.state;
+
     return (
       <div className="wrapper">
-        <div className="slider-wrap">
-          <img
-
-            alt="Ritual cups logo"
-            src="/assets/ritual.jpg"
-            className={`slide_1 ${
-              currentSlide === 1 ? `slider--show` : `slider--hide`
-            }`}
-          />
-          <img
-            alt="Red head girl"
-            src="/assets/Eneco.jpg"
-            className={`slide_2 ${
-              currentSlide === 2 ? `slider--show` : `slider--hide`
-            }`}
-          />
-          <img
-            alt="tam tam reception"
-            src="/assets/tamtam.png"
-            className={`slide_3 ${
-              currentSlide === 3 ? `slider--show` : `slider--hide`
-            }`}
-          />
+        <div className="slideshow_container">
           <div className="slider-buttons">
-            <button className="left-button" onClick={() => this.slider(-1)}>
+            <button
+              className="left-button"
+              onClick={() => this.toggleSliderClass("left")}
+            >
               <i className="fa fa-arrow-left" />
             </button>
-
             <button className="center-button">View Case</button>
-            <button className="right-button" onClick={() => this.slider(1)}>
+            <button
+              className="right-button"
+              onClick={() => this.toggleSliderClass("right")}
+            >
               <i className="fa fa-arrow-right" />
             </button>
+          </div>
+          <div
+            className={`slides_container ${shiftSlideToLeft} ${shiftSlideToRight}`}
+          >
+            <div id="section_1" className="section" />
+            <div id="section_2" className="section" />
+            <div id="section_3" className="section" />
           </div>
         </div>
 

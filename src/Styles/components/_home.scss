@@ -5,63 +5,59 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  position: relative;
+  overflow: hidden;
 
-  .slider-wrap {
+  .slideshow_container {
     position: relative;
-    width: 100%;
-    white-space: nowrap;
-    height: 620px;
-    overflow: hidden;
-    @include breakpoint("ipad_portrait") {
-      height: 700px;
-    }
-    @include breakpoint("mobile_portrait") {
-      height: 600px;
-    }
-    .slide_1 {
-      border: none;
-      width: 100%;
-      margin-top: -5%;
 
-      @include breakpoint("ipad_portrait") {
-        width: 1010px;
-        height: 750px;
+    .slides_container {
+      height: 70vh;
+      display: flex;
+      transition: transform 0.3s linear;
+
+      &.shift_to_left {
+        transform: translateX(-100vw);
       }
-      @include breakpoint("mobile_portrait") {
-        height: 710px;
-        width: 800px;
-        margin-left: -30%;
+      &.shift_to_right {
+        transform: translateX(100vw);
+      }
+      #section_1 {
+        background: url(assets/Eneco.jpg);
+        background-position: center 10%;
+        background-size: cover;
+      }
+      #section_2 {
+        background: url(assets/ritual.jpg);
+        background-position: center 30%;
+        background-size: cover;
+      }
+      #section_3 {
+        background: url(assets/tamtam.png);
+        background-position: 40% 70%;
+        background-size: cover;
+      }
+
+      .section {
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        transition: flex 0.4s ease;
+
+        .content {
+          z-index: 2;
+
+          h1 {
+            font-size: 8em;
+          }
+        }
       }
     }
 
-    .slide_2 {
-      @extend .slide_1;
-      margin-top: -5%;
-      @include breakpoint("mobile_portrait") {
-        margin-top: -5%;
-      }
-    }
-
-    .slide_3 {
-      @extend .slide_1;
-      margin-top: -25%;
-      @include breakpoint("ipad_portrait") {
-        height: 920px;
-      }
-      @include breakpoint("mobile_portrait") {
-        width: 780px;
-        margin-top: -5%;
-        margin-left: -15%;
-      }
-    }
-
-    .slider--show {
-      display: block;
-    }
-    .slider--hide {
-      display: none;
-    }
     .slider-buttons {
+      z-index: 1;
       position: absolute;
       top: 70%;
       left: 0;
